@@ -30,7 +30,6 @@ public class PointProvider : APointProvider
             Gizmos.color = Color.blue;
             Gizmos.DrawLine(transform.GetChild(i).transform.position, transform.GetChild(i + 1).transform.position);
         }
-
     }
 #endif
 
