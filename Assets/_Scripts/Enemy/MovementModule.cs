@@ -18,7 +18,7 @@ public class MovementModule : MonoBehaviour, IMovementModule
     {
         _distanceCalculator = GetComponent<DistanceCalculator>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
-        _points = _distanceCalculator.GetRandomPointList();
+        _points = _distanceCalculator.GetRandomPath();
     }
 
 
@@ -36,13 +36,13 @@ public class MovementModule : MonoBehaviour, IMovementModule
     private void CheckTargetReached()
     {
         Debug.Log(_points[_curPointIndex]);
-        if (!_isTheLastPoint && Vector3.Distance(transform.position, _points[_curPointIndex]) <= 1.5f)
+        if (!_isTheLastPoint && Vector3.Distance(transform.position, _points[_curPointIndex]) <= 2f)
         {
             _curPointIndex++;
             _isMoving = false;
             if (_curPointIndex == _points.Count) 
             {
-                _isTheLastPoint = true; 
+                _isTheLastPoint = true;               
             }
         }
     }
@@ -51,5 +51,4 @@ public class MovementModule : MonoBehaviour, IMovementModule
     {
         _navMeshAgent.destination = _points[_curPointIndex];
     }
-
 }
