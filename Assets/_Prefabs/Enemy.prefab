@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5815131015313332770}
   - component: {fileID: 5815131015313332773}
   - component: {fileID: 5815131015313332772}
-  - component: {fileID: 5815131015313332769}
   - component: {fileID: 5815131015313332768}
   - component: {fileID: 769089890}
   - component: {fileID: 1370744151181646501}
@@ -100,28 +99,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!195 &5815131015313332769
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5815131015313332775}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.7
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 0
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 1
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 2
 --- !u!114 &5815131015313332768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,3 +138,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   avoidanceRange: 1
+  targetVelocity: 10
+  numberOfRays: 17
+  angle: 90

@@ -1,13 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class MovementModule : MonoBehaviour, IMovementModule
 {  
     private List<Vector3> _points;
-
-    private NavMeshAgent _navMeshAgent;
     private DistanceCalculator _distanceCalculator;
 
     private int _curPointIndex = 0;
@@ -17,7 +14,6 @@ public class MovementModule : MonoBehaviour, IMovementModule
     private void Start()
     {
         _distanceCalculator = GetComponent<DistanceCalculator>();
-        _navMeshAgent = GetComponent<NavMeshAgent>();
         _points = _distanceCalculator.GetRandomPath();
     }
 
@@ -49,6 +45,6 @@ public class MovementModule : MonoBehaviour, IMovementModule
 
     public void MoveToPoint(Vector3 point)
     {
-        _navMeshAgent.destination = _points[_curPointIndex];
+        //_navMeshAgent.destination = _points[_curPointIndex];
     }
 }
