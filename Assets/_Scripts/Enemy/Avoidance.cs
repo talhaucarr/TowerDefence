@@ -10,11 +10,19 @@ public class Avoidance : MonoBehaviour
     [SerializeField] private float targetVelocity = 10.0f;
     [SerializeField] private int numberOfRays = 17;
     [SerializeField] private float angle = 90;
+    [SerializeField] private float agirlik;
 
     private Vector3 _moveDir;
+    private float temp;
+    private float tempp;
 
     private bool _isMoving = false;
     private bool IsMoving { get => _isMoving; }
+
+    private void Start()
+    {
+        temp = agirlik;
+    }
 
     private void Update()
     {
@@ -41,6 +49,8 @@ public class Avoidance : MonoBehaviour
 
     private void Sensors()
     {
+        temp = agirlik;
+        tempp = targetVelocity;
         for (int i = 0; i < numberOfRays; i++)
         {
 
@@ -50,10 +60,11 @@ public class Avoidance : MonoBehaviour
 
             Ray ray = new Ray(transform.position, direction);
             RaycastHit hitInfo;
-
             if(Physics.Raycast(ray, out hitInfo, avoidanceRange))
             {
-                AvoidTheObject(direction);
+                AvoidTheObject(direction * temp, tempp);
+                temp++;
+                tempp += 5;
             }
             else
             {
@@ -61,17 +72,23 @@ public class Avoidance : MonoBehaviour
             }
 
         }
+
+        //Quaternion rotations = Quaternion.LookRotation(_moveDir * targetVelocity);
+        //Quaternion current = transform.localRotation;
+
+        //transform.localRotation = Quaternion.Slerp(current, rotations,1f);
+
         transform.position += _moveDir * Time.deltaTime;
     }
 
-    private void AvoidTheObject(Vector3 direction)
+    private void AvoidTheObject(Vector3 direction, float velocity)
     {
-        _moveDir -= (1.0f / numberOfRays) * targetVelocity * direction;
+        _moveDir -= (1.0f / numberOfRays) * velocity * direction;
     }
 
     private void WalkTheObject()
     {
-        _moveDir += (1.0f / numberOfRays) * targetVelocity * (target.position - transform.position).normalized;
+        _moveDir += (1.0f / numberOfRays) * (target.position - transform.position).normalized * targetVelocity;
     }
 
     private void LookAtTarget()
