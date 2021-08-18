@@ -40,7 +40,6 @@ public class DistanceCalculator : MonoBehaviour
         {
             totalDistance += Vector3.Distance(randomPoints[i], randomPoints[i + 1]);
         }
-        Debug.Log($"Total Distance: {totalDistance}");
     }
 
     private void PercentDistanceCompleted()

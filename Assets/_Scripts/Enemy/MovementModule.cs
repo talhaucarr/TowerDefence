@@ -31,7 +31,6 @@ public class MovementModule : MonoBehaviour, IMovementModule
 
     private void CheckTargetReached()
     {
-        Debug.Log(_points[_curPointIndex]);
         if (!_isTheLastPoint && Vector3.Distance(transform.position, _points[_curPointIndex]) <= 2f)
         {
             _curPointIndex++;
