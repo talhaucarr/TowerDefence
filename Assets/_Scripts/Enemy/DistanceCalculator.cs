@@ -48,9 +48,4 @@ public class DistanceCalculator : MonoBehaviour
     {
 
     }
-
-    private void OnDrawGizmos()
-    {
-        
-    }
 }

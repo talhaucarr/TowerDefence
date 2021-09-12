@@ -35,9 +35,7 @@ public class MovementModule : MonoBehaviour, IMovementModule
 
     private void CheckTargetReached()
     {
-        Debug.DrawLine(transform.position, _points[_curPointIndex], Color.green);
-        Debug.Log(Vector3.Distance(transform.position, _points[_curPointIndex]));
-        //Debug.Log(Random.insideUnitCircle * 3);
+        
         if (!_isTheLastPoint && Vector3.Distance(transform.position, _points[_curPointIndex]) <= .44f)
         {
             _curPointIndex++;
@@ -54,5 +52,8 @@ public class MovementModule : MonoBehaviour, IMovementModule
         _navMeshAgent.destination = _points[_curPointIndex];
     }
 
-    
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawLine(transform.position, _points[_curPointIndex]);
+    }
 }
