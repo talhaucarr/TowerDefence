@@ -30,7 +30,8 @@ public class DistanceCalculator : MonoBehaviour
 
     private Vector3 RandomPointInsideSphere(Vector3 point)
     {
-        return point + Random.insideUnitSphere * randomPointRadius;
+        Vector2 randomPointTemp = Random.insideUnitCircle;
+        return point + new Vector3(randomPointTemp.x, 0f, randomPointTemp.y) * randomPointRadius;
     }
 
     private void CalculateTotalDistance(List<Vector3> randomPoints)
@@ -38,6 +39,7 @@ public class DistanceCalculator : MonoBehaviour
         float totalDistance = 0f;
         for (int i = 0; i < randomPoints.Count - 1; i++)
         {
+            
             totalDistance += Vector3.Distance(randomPoints[i], randomPoints[i + 1]);
         }
     }
@@ -45,5 +47,10 @@ public class DistanceCalculator : MonoBehaviour
     private void PercentDistanceCompleted()
     {
 
+    }
+
+    private void OnDrawGizmos()
+    {
+        
     }
 }

@@ -23,7 +23,7 @@ public class PointProvider : APointProvider
         for (int i = 0; i < transform.childCount; i++)
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.GetChild(i).transform.position, 1);
+            Gizmos.DrawWireSphere(transform.GetChild(i).transform.position, 4);
         }
         for (int i = 0; i < transform.childCount - 1; i++)
         {
